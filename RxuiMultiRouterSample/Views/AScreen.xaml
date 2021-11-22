@@ -1,0 +1,23 @@
+﻿<rxui:ReactiveUserControl x:Class="RxuiMultiRouterSample.Views.AScreen"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:RxuiMultiRouterSample.Views" 
+             mc:Ignorable="d"  Background="LightBlue"
+                          xmlns:rxui="http://reactiveui.net"
+                          xmlns:vm="clr-namespace:RxuiMultiRouterSample.ViewModels" 
+                          d:DataContext="{d:DesignInstance Type=vm:AScreenViewModel}"
+                          x:TypeArguments="vm:AScreenViewModel"
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="1*" />
+        </Grid.RowDefinitions>
+        <WrapPanel Background="OrangeRed">
+            <TextBlock MinWidth="100" Text="Screen1"/>
+        </WrapPanel>
+        <rxui:RoutedViewHost Grid.Row="1" x:Name="host" Router="{Binding Router}"></rxui:RoutedViewHost>
+    </Grid>
+</rxui:ReactiveUserControl>

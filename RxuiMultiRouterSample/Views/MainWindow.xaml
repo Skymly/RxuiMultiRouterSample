@@ -1,0 +1,32 @@
+﻿<rxui:ReactiveWindow x:Class="RxuiMultiRouterSample.Views.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:rxui="http://reactiveui.net"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:RxuiMultiRouterSample"
+        mc:Ignorable="d" 
+        x:TypeArguments="vm:MainWindowViewModel"
+        xmlns:vm="clr-namespace:RxuiMultiRouterSample.ViewModels"
+        xmlns:views="clr-namespace:RxuiMultiRouterSample.Views"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="1*" />
+        </Grid.RowDefinitions>
+        <WrapPanel>
+            <ComboBox IsReadOnly="True" x:Name="ViewsComboBox" ItemsSource="{Binding Views}" SelectedItem="{Binding SelectedView,Mode=OneWayToSource}" MinWidth="100"></ComboBox>
+            <ComboBox IsReadOnly="True" x:Name="ScreensComboBox" ItemsSource="{Binding Screens}" SelectedItem="{Binding SelectedScreen,Mode=OneWayToSource}" MinWidth="100"/>
+            <Button x:Name="btn1" Content="Button1"/>
+        </WrapPanel>
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*" />
+                <ColumnDefinition Width="1*" />
+            </Grid.ColumnDefinitions>
+            <views:AScreen Margin="20"/>
+            <views:BScreen Margin="20" Grid.Column="1"/>
+        </Grid>
+    </Grid>
+</rxui:ReactiveWindow>
